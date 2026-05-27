@@ -80,13 +80,12 @@ By default, Harbor does not automatically start if the server reboots. You can f
 ```bash
 sudo tee /etc/systemd/system/harbor.service > /dev/null <<EOF
 [Unit]
-Description=Harbor
-After=docker.service systemd-networkd.service systemd-resolved.service
+Description=Harbor Container Registry
+After=docker.service systemd-networkd.service
 
 [Service]
-Type=simple
-Restart=on-failure
-RestartSec=5s
+Type=oneshot
+RemainAfterExit=yes
 WorkingDirectory=/opt/harbor
 ExecStart=/usr/bin/docker compose up -d --remove-orphans
 ExecStop=/usr/bin/docker compose stop
@@ -100,6 +99,10 @@ EOF
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable harbor
+```
+Verify
+```
+sudo systemctl status harbor
 ```
 
 ### Troubleshooting Tips
