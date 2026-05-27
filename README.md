@@ -1,4 +1,4 @@
-# Harbor-registry-trivy
+# ⚓🏗️Harbor-registry-trivy
 Harbor docker image registry with Trivy Image scanning.
 Here are the simple steps to install the latest version of Harbor (v2.14.4) on your headless Debian 13 server.
 
